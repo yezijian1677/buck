@@ -22,23 +22,14 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coffee implements Serializable {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Coffee extends BaseEntity implements Serializable {
+
 
     private String name;
 
     @Column
-    @Type(type = "org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyAmount",
+    @Type(type = "org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
             parameters = {@org.hibernate.annotations.Parameter(name = "currencyCode", value = "CNY")})
-    private Money money;
-
-    @Column(updatable = false)
-    @CreationTimestamp
-    private Date createTime;
-
-    @UpdateTimestamp
-    private Date updateTime;
+    private Money price;
 
 }
